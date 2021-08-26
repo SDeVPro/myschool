@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+<head>
+<title>Student's Site</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="{%static 'css/reset.css'%}" type="text/css" media="all">
+<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all">
+<script type="text/javascript" src="{% static 'js/jquery-1.4.2.min.js'%}" ></script>
+<script type="text/javascript" src="{% static 'js/cufon-yui.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/cufon-replace.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/Myriad_Pro_300.font.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/Myriad_Pro_400.font.js'%}"></script>
+<script type="text/javascript" src="{% static 'js/script.js'%}"></script>
+<!--[if lt IE 7]>
+<link rel="stylesheet" href="css/ie6.css" type="text/css" media="screen">
+<script type="text/javascript" src="js/ie_png.js"></script>
+<script type="text/javascript">ie_png.fix('.png, footer, header nav ul li a, .nav-bg, .list li img');</script>
+<![endif]-->
+<!--[if lt IE 9]><script type="text/javascript" src="js/html5.js"></script><![endif]-->
+</head>
+<body id="page1">
+<!-- START PAGE SOURCE -->
+<div class="wrap">
+  <header>
+    <div class="container">
+      <h1><a href="#">Student's site</a></h1>
+      <nav>
+        <ul>
+          <li class="current"><a href="/" class="m1">Home Page</a></li>
+          <li><a href="about" class="m2">About Us</a></li>
+          <li><a href="post" class="m3">Our Articles</a></li>
+          <li><a href="contact" class="m4">Contact Us</a></li>
+          <li><a href="teachers" class="m4">Teachers</a></li>
+          <li><a href="students" class="m4">Students</a></li>
+          <li><a href="admins" class="m4">Admins</a></li>
+          <li class="last"><a href="sitemap.html" class="m5">Sitemap</a></li>
+        </ul>
+      </nav>
+      <form action="#" id="search-form">
+        <fieldset>
+          <div class="rowElem">
+            <input type="text">
+            <a href="#">Search</a></div>
+        </fieldset>
+      </form>
+    </div>
+  </header>
+  <div class="container">
+    <aside>
+      <h3>Categories</h3>
+      <ul class="categories">
+        <li><span><a href="/">Home</a></span></li>
+        <li><span><a href="students">Students</a></span></li>
+        <li><span><a href="teacher">Teachers</a></span></li>
+        <li><span><a href="post">Articles</a></span></li>
+        <li><span><a href="admins">Administrators</a></span></li>
+        
+      </ul>
+      <form action="#" id="newsletter-form">
+        <fieldset>
+          <div class="rowElem">
+            <h2>Newsletter</h2>
+            <input type="email" value="Enter Your Email Here" onFocus="if(this.value=='Enter Your Email Here'){this.value=''}" onBlur="if(this.value==''){this.value='Enter Your Email Here'}" >
+            <div class="clear"><a href="#" class="fleft">Unsubscribe</a><a href="#" class="fright">Submit</a></div>
+          </div>
+        </fieldset>
+      </form>
+      <h2>Fresh <span>News</span></h2>
+      <ul class="news">
+        {% for rs in post%} 
+        <li><strong>{{rs.create_at}}</strong>
+          <h4><a href="post_detail/{{rs.id}}/">{{rs.title}}</a></h4>
+          {{rs.description}} </li>
+        {% endfor %}
+      </ul>
+    </aside>
+    <section id="content">
+      <div id="banner">
+        <h2>Professional <span>Online Education <span>Since 1992</span></span></h2>
+      </div>
+      <div class="inside">
+        {% for rs in teachers %}
+        <a href="teacher_detail/{{rs.id}}/"> <h2>{{rs.name}} <span>{{rs.surname}}</span></h2></a>
+        <p>{{rs.level}}</p>
+        
+         <img src="{{rs.image.url}}" style="height: 100px;" alt="">
+        </ul>
+        <p>{{rs.level_years}}</p>
+        <p class="p0">{{rs.create_at}}</p>
+        {%endfor%}
+      </div>
+    </section>
+  </div>
+</div>
+<footer>
+  <div class="footerlink">
+    <p class="lf">Copyright &copy; 2010 <a href="#">SiteName</a> - All Rights Reserved</p>
+    <p class="rf">Design by <a href="http://www.templatemonster.com/">TemplateMonster</a></p>
+    <div style="clear:both;"></div>
+  </div>
+</footer>
+<script type="text/javascript"> Cufon.now(); </script>
+<!-- END PAGE SOURCE -->
+</body>
+</html>
